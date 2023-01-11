@@ -1,18 +1,16 @@
-class ProjectList {
-    constructor(projects) {}
+import React from 'react';
+import './ProjectList.css';
 
-    render()
-        {
-        return(
-                <div>
-                {this.projects.map(item => (
-                    <img src={item.img} alt={item.category}/>))
-                }
-                </div>
-              )
-        }
-
-}
+function ProjectList({ projects }) {
+    let index = 0;
+  
+    return (
+      projects.map((item) => (
+        <div className='project__img' key={index++}>
+          <img src={item.img} alt='' />
+        </div>
+      ))
+    );
+  }
 
 export default ProjectList;
-    

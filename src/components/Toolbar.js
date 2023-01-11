@@ -1,17 +1,20 @@
-class Toolbar {
-    constructor(selFilter) {
-        this.selFilter = selFilter;
-    }
+import React from 'react';
+import './Toolbar.css';
 
-    handleClick = () => {console.log(selFilter)};
-
-    render() {
-        return(
-            <div>
-                <Toolbar selected={this.selFilter} onSelectFilter={handleClick}/>    
-            </div>
-        )
-    }
-}
-
+function Toolbar({typesList,selected,onSelectFilter}) {
+    return (
+      <div className='toolbar'>
+        {typesList.map((item) => (
+          <button
+            onClick={onSelectFilter}
+            key={item}
+            className={item === selected ? 'active' : ''}
+          >
+            {item}
+          </button>
+        ))}
+      </div>
+    );
+  }
+  
 export default Toolbar;

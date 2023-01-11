@@ -1,71 +1,36 @@
 import { useState } from "react"
+import './Portfolio.css';
 import ProjectList from "./ProjectList";
 import Toolbar from "./Toolbar";
 
-class Portfolio {
-    constructor() {
-        this.projects = [{
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",
-            category: "Business Cards"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/200.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/emi_haze.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/codystretch.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_003.jpg",
-            category: "Business Cards"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290.png",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/200.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/transmission.jpg",
-            category: "Business Cards"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_1.png",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_2.png",
-            category: "Flayers"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/the_ninetys_brand.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/dia.jpg",
-            category: "Business Cards"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_350x197.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/emi_haze.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/transmission.jpg",
-            category: "Business Cards"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/Triangle_350x197_1.jpg",
-            category: "Websites"
-          }, {
-            img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/place200x290_3.png",
-            category: "Flayers"
-          }];
-        this.filters={["All", "Websites", "Flayers", "Business Cards"]};
-        let [filter, setFilter] = useState(this.filters);        
-        }
+function Portfolio ({ projectList }) {
+  const typesList=["All", "Websites", "Flayers", "Business Cards"];
+  let [filteredTypes, setFilteredTypes] = useState("All");        
+  let [filteredProjects, setFilteredProjects] = useState(projectList);
 
+  const filter = (e) => {
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach((item) => item.classList.remove('active'));
+    e.target.classList.add('active');
+    const select = e.target.textContent;
+    if (select === 'All') {
+      setFilteredProjects(projectList);
+    } else {
+      setFilteredProjects(
+        projectList.filter(item => item.category === select)
+      );
+    }
+    setSelected(select);
+    console.log(select);
+  }
         render()
         {
           return(
             <div>
-              <ProjectList projects={this.projects.filter(item => item["category"] == filter)}/>
-              <Toolbar selFilter={filter} />
+              <ProjectList projects={filteredProjects}/>
+              <Toolbar filters={typesList}
+                selected={selected}
+                onSelectFilter={filter}/>
             </div> 
           )
         }
