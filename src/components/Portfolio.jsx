@@ -2,6 +2,7 @@ import { useState } from "react"
 import './Portfolio.css';
 import ProjectList from "./ProjectList";
 import Toolbar from "./Toolbar";
+import {render} from 'react-dom';
 
 function Portfolio ({ projectList }) {
   const typesList=["All", "Websites", "Flayers", "Business Cards"];
@@ -12,16 +13,16 @@ function Portfolio ({ projectList }) {
     const buttons = document.querySelectorAll('button');
     buttons.forEach((item) => item.classList.remove('active'));
     e.target.classList.add('active');
-    const select = e.target.textContent;
-    if (select === 'All') {
+    const myselected = e.target.textContent;
+    if (myselected === 'All') {
       setFilteredProjects(projectList);
     } else {
       setFilteredProjects(
-        projectList.filter(item => item.category === select)
+        projectList.filter(item => item.category === myselected)
       );
     }
-    setSelected(select);
-    console.log(select);
+    setFilteredTypes(myselected);
+    console.log(myselected);
   }
         render()
         {
@@ -29,7 +30,7 @@ function Portfolio ({ projectList }) {
             <div>
               <ProjectList projects={filteredProjects}/>
               <Toolbar filters={typesList}
-                selected={selected}
+                selected={filteredTypes}
                 onSelectFilter={filter}/>
             </div> 
           )
