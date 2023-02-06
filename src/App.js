@@ -1,6 +1,6 @@
-import logo from './logo.svg';
+import './logo.svg';
 import './App.css';
-import './components/Portfolio';
+import Portfolio from './components/Portfolio';
 
 const projects = [{
   img: "https://raw.githubusercontent.com/netology-code/ra16-homeworks/master/events-state/filter/img/mon.jpg",

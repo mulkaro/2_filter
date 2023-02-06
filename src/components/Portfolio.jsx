@@ -6,8 +6,8 @@ import {render} from 'react-dom';
 
 function Portfolio ({ projectList }) {
   const typesList=["All", "Websites", "Flayers", "Business Cards"];
-  let [filteredTypes, setFilteredTypes] = useState("All");        
-  let [filteredProjects, setFilteredProjects] = useState(projectList);
+  const [filteredTypes, setFilteredTypes] = useState("All");        
+  const [filteredProjects, setFilteredProjects] = useState(projectList);
 
   const filter = (e) => {
     const buttons = document.querySelectorAll('button');

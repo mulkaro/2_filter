@@ -8,8 +8,7 @@ function Toolbar({typesList,selected,onSelectFilter}) {
           <button
             onClick={onSelectFilter}
             key={item}
-            className={item === selected ? 'active' : ''}
-          >
+            className={item === selected ? 'active' : ''}>
             {item}
           </button>
         ))}
