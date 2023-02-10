@@ -8,3 +8,66 @@
 .project__img:hover { filter: opacity(.8); }
 
 img { width: 100%; }
+
+.image-gallery { 
+	display: flex; 
+	flex-wrap: wrap; 
+	gap: 10px; 
+} 
+	
+.image-gallery > li { 
+	height: 300px; 
+	cursor: pointer; 
+	position: relative; 
+} 
+
+.image-gallery li img { 
+	object-fit: cover; 
+	width: 30%; 
+	height: 30%; 
+	vertical-align: middle; 
+	border-radius: 5px; 
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Создайте четыре одинаковых столбца, которые находятся рядом друг с другом */
+.column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Адаптивный макет - делает два столбца макет вместо четырех столбцов */
+@media screen and (max-width: 800px) {
+  .column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Адаптивный макет - делает два столбца стека друг на друга, а не рядом друг с другом */
+@media screen and (max-width: 600px) {
+  .column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+.container {
+display: grid;
+grid-gap: 5px;
+grid-template-columns: repeat(3, 400px);
+grid-template-rows: repeat(2, 300px);
+}
+

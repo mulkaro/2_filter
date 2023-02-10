@@ -1,7 +1,7 @@
 import React from 'react';
 import './Toolbar.css';
 
-function Toolbar({typesList,selected,onSelectFilter}) {
+function Toolbar(typesList,selected,onSelectFilter) {
     return (
       <div className='toolbar'>
         {typesList.map((item, index) => {
@@ -14,7 +14,7 @@ function Toolbar({typesList,selected,onSelectFilter}) {
             </button>
           )
           }
-        )}
+        )})
       </div>
     );
   }

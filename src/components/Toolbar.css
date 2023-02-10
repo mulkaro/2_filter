@@ -1,5 +1,9 @@
 /* ---------- button ---------- */
-.toolbar { margin-bottom: 20px; }
+.toolbar { 
+  margin-bottom: 20px; 
+  margin-left: 500px;
+  margin-top: 10 px;
+}
 
 button {
   margin-right: 5px;

@@ -3,9 +3,9 @@ import './ProjectList.css';
 
 function ProjectList({ projects }) {
   //let index = 0;
-  function Image({ img_ref }) {
+  function Image(img_ref) {
     return (
-      <div >
+      <div>
         <img src={img_ref} alt='' />
       </div>
     )
@@ -16,14 +16,12 @@ function ProjectList({ projects }) {
   }*/
     
 return ( 
-  <div>
-    <div className='container'>
-      {
-        projects.map((item, index) => {
-        return (<Image img_ref={item.img} key={index} />)
-      })
-      }
-    </div>
+  <div className="container">
+  {
+    projects.map((item, index) => {
+      return (<Image img_ref={item.img} key={index} />)
+    })
+  }
   </div>
   )
 }
